@@ -1,24 +1,28 @@
-import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import React, { FC } from 'react';
+import { TouchableOpacity, Text, Dimensions } from 'react-native';
 
 import styles from './styles';
 import { ButtonPropsTypes } from '../../interfaces/components/Button';
 
-const Button = ({ value, color, backgroundColor, isLarge, action }: ButtonPropsTypes) => {
+const Button: FC<ButtonPropsTypes> = ({ value, color, backgroundColor, isLarge, customStyles, action }) => {
+  const windowWidth = Dimensions.get('window').width;
+
   return (
     <TouchableOpacity
       onPress={() => action(value)}
-      style={{
-        ...styles.container,
-        width: isLarge ? 157.8 : 70,
-        backgroundColor: backgroundColor ? backgroundColor : '#2D2D2D'
-      }}
+      style={[
+        customStyles,
+        styles.container,
+        {
+          width: isLarge ? 'auto' : 70,
+          flex: isLarge ? 1 : 0,
+          marginHorizontal: isLarge ? (windowWidth - (70 * 4)) / 8 : 0,
+          backgroundColor: backgroundColor ? backgroundColor : '#2D2D2D',
+        }
+      ]}
     >
       <Text
-        style={{
-          ...styles.value,
-          color: color ? color : 'white'
-        }}
+        style={[styles.value, { color: color ? color : 'white' }]}
       >
         {value}
       </Text>

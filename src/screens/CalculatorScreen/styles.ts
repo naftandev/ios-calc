@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     justifyContent: 'flex-end'
   },
-  operation: {
+  previousValue: {
     ...theme.text,
     fontSize: 30,
     textAlign: 'right',
@@ -20,13 +20,19 @@ const styles = StyleSheet.create({
     textAlign: 'right'
   },
   buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 10
   },
-  buttonsRowContainer: {
+  column: {
+    width: '50%'
+  },
+  row: {
     flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  button: {
     marginBottom: 18,
-    paddingHorizontal: 10,
-    justifyContent: 'center'
   }
 });
 
